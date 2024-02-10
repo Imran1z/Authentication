@@ -90,7 +90,7 @@ const Profile = () => {
                             request.resource.size<2*1024*1024 &&
                             request.resource.contentType.matches('images/.*') */}
 
-            <img src={`${currentUser.user.profile}`} alt="Profile" className='h-24 w-24 self-center cursor-pointer rounded-full mb-5 object-cover hover:h-[100px]  hover:w-[100px]'
+            <img src={FormData.profile || `${currentUser.user.profile}`} alt="Profile" className='h-24 w-24 self-center cursor-pointer rounded-full mb-5 object-cover hover:h-[100px]  hover:w-[100px]'
               onClick={handleImageClick}
             />
                   <p className='text-sm self-center'>
