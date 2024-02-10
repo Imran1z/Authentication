@@ -7,11 +7,13 @@ import { updateUserStart,updateUserSuccess,updateUserFailure } from '../redux/us
 
 
 const Profile = () => {
-  const {currentUser}=useSelector((state)=>state.user);
+  const {currentUser,loading, error}=useSelector((state)=>state.user);
   const [image, setImage] = useState(undefined);
+  console.log(error)
   const [imagePercent, setImagePercent] = useState(0)
   const [imageError, setImageError] = useState(false)
   const [FormData, setFormData] = useState({});
+  const [updateSuccess, setupdateSuccess] = useState(false)
   const dispatch =useDispatch()
   console.log(FormData)
   console.log(imagePercent)
@@ -103,8 +105,9 @@ const Profile = () => {
         return;
       }
       dispatch(updateUserSuccess(data));
-      console.log("Dataaaa",data)
-      setUpdateSuccess(true);
+      
+      setupdateSuccess(true)
+     // setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error));
     }
@@ -145,13 +148,16 @@ const Profile = () => {
             
              <input type="password" placeholder='Password' id='password' className='bg-slate-100 p-3 rounded-lg' onChange={handleChange}/>
 
-             <button  className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80 p-3'>Update</button>
+             <button  className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80 p-3'>{loading?'Loading...':'Update'}</button>
 
-             <div className='flex justify-between'>
-             <p className='text-red-600  '>Delete Account</p>
-             <p className='text-red-600  '>Sign Out</p>
-             </div>
             </form>
+             <div className='flex justify-between'>
+             <p className='text-red-600  mt-5'>Delete Account</p>
+             <p className='text-red-600 mt-5 '>Sign Out</p>
+             </div>
+             {/* <p className='text-red-600 mt-5 self-center '>{error && 'Something went wrong'}</p> */}
+             <p className='text-green-400 mt-5 self-center text-center'>{updateSuccess && 'User is updated successfully'}</p>
+
     </div>
   )
 }
