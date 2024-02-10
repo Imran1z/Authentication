@@ -2,7 +2,11 @@ import User from "../models/user.model.js"
 import { errorHandler } from "../utils/error.js"
 import bcryptjs from 'bcryptjs'
 
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 8273dd2ce9e1c410e56d13279af7014d6022b1df
 
 
 export const updateUser = async (req, res, next) => {
@@ -38,3 +42,9 @@ export const updateUser = async (req, res, next) => {
         next(error);
     }
 };
+<<<<<<< HEAD
+=======
+
+
+    
+>>>>>>> 8273dd2ce9e1c410e56d13279af7014d6022b1df

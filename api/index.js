@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import userRoutes from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js'
+import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 
@@ -20,7 +21,12 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
 
 //midllewares
 app.use(express.json());
+<<<<<<< HEAD
 app.use(cookieParser())
+=======
+app.use(cookieParser());
+
+>>>>>>> 8273dd2ce9e1c410e56d13279af7014d6022b1df
 
 
 
