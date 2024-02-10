@@ -93,6 +93,19 @@ const Profile = () => {
             <img src={`${currentUser.user.profile}`} alt="Profile" className='h-24 w-24 self-center cursor-pointer rounded-full mb-5 object-cover hover:h-[100px]  hover:w-[100px]'
               onClick={handleImageClick}
             />
+                  <p className='text-sm self-center'>
+                {imageError ? (
+                  <span className='text-red-700'>
+                    Error uploading image (file size must be less than 2 MB)
+                  </span>
+                ) : imagePercent > 0 && imagePercent < 100 ? (
+                  <span className='text-slate-700'>{`Uploading: ${imagePercent} %`}</span>
+                ) : imagePercent === 100 ? (
+                  <span className='text-green-400'>Image uploaded successfully</span>
+                ) : (
+                  ''
+                )}
+              </p>
 
             <input type="username" defaultValue={currentUser.user.username} placeholder='Username' id='password' className='bg-slate-100 p-3 rounded-lg'/> 
             
