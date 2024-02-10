@@ -25,7 +25,7 @@ const Header = () => {
                 {currentUser?(
                
                 <img 
-                  src={`${currentUser.user.profile}`} 
+                  src={`${currentUser.profile}`} 
                   alt='profile' 
                   className='h-7 w-7 rounded-full object-cover'
                   style={{ alignSelf: 'center' }} // Vertically center the image

@@ -12,6 +12,7 @@ const OAuth = () => {
   const handleGoogleClick= async()=>{
     try {
       const provider =new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' }); 
       const auth=getAuth(app);
 
       const result =await signInWithPopup(auth,provider);
@@ -28,8 +29,9 @@ const OAuth = () => {
         })
       }); 
       const data =await res.json();
-      console.log(data)
-      dispatch(signInSuccess(data))  
+      console.log("dta",data)
+      console.log("dta",data.user)
+      dispatch(signInSuccess(data.user))  
        navigate('/')
     } catch (error) {
       console.log('Could not login with google')
