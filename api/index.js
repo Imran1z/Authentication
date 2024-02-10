@@ -21,12 +21,8 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
 
 //midllewares
 app.use(express.json());
-<<<<<<< HEAD
-app.use(cookieParser())
-=======
 app.use(cookieParser());
 
->>>>>>> 8273dd2ce9e1c410e56d13279af7014d6022b1df
 
 
 
