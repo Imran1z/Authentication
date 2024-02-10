@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getDownloadURL, getStorage,ref, uploadBytesResumable} from 'firebase/storage'
 import {app} from '../firebase.js'
-import { updateUserStart,updateUserSuccess,updateUserFailure,deleteUserStart,deleteUserSuccess,deleteUserFailure } from '../redux/user/userSlice.js'
+import { updateUserStart,updateUserSuccess,updateUserFailure,deleteUserStart,deleteUserSuccess,deleteUserFailure, signOut} from '../redux/user/userSlice.js'
 
 
 
@@ -134,6 +134,16 @@ const Profile = () => {
       
     }
   }
+
+
+  const handleSignout =async()=>{
+    try {
+       fetch(`/api/v1/auth/signout`);
+       dispatch(signOut())
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className='p-3 max-w-lg mx-auto'>
             <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -174,7 +184,7 @@ const Profile = () => {
             </form>
              <div className='flex justify-between'>
              <p className='text-red-600  mt-5 cursor-pointer' onClick={handleDeleteAccount}>Delete Account</p>
-             <p className='text-red-600 mt-5 cursor-pointer'>Sign Out</p>
+             <p className='text-red-600 mt-5 cursor-pointer' onClick={handleSignout}>Sign Out</p>
              </div>
              {/* <p className='text-red-600 mt-5 self-center '>{error && 'Something went wrong'}</p> */}
              <p className='text-green-400 mt-5 self-center text-center'>{updateSuccess && 'User is updated successfully'}</p>
